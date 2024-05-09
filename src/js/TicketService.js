@@ -3,62 +3,66 @@
  *  Содержит методы для отправки запросов на сервер и получения ответов
  * */
 import createRequest from './api/createRequest';
-import Ticket from './Ticket';
 
 export default class TicketService {
-  list(callback) {
+  static list(callback) {
     const options = {
       method: 'GET',
       body: 'http://localhost:7070?method=allTickets',
-      callback: callback
+      callback,
     };
-
-    const response = createRequest(options);
-
+    createRequest(options);
   }
 
-  get(id, callback) {}
+  static get(id, callback) {
+    const options = {
+      method: 'GET',
+      body: `http://localhost:7070?method=ticketById&id=${id}`,
+      callback,
+    };
+    createRequest(options);
+  }
 
-  create(data, callback) {
-    // data.append('id', null);
-    // data.append('status', false);
-    const name = data.get('name')
-    console.log(name)
+  static create(data, callback) {
+    const name = data.get('name');
     const description = data.get('description');
-    console.log(description)
-    // const status = data.append('status', false);
-
-    // const ticket = new Ticket('null', name, description, false,);
-
-    // ticket.id = 'null';
-    // ticket.name = name;
-    // ticket.description = description;
-    // ticket.status = false;
 
     const ticket = {
-      id: null,
-      name: encodeURIComponent(name),
-      description: encodeURIComponent(description),
+      name,
+      description,
       status: false,
-      created:Date.now()
-    }
-
-    // const ticket = 
-
-
-    console.log(ticket)
+      created: Date.now(),
+    };
 
     const options = {
       method: 'POST',
       body: 'http://localhost:7070?method=createTicket',
-      callback: callback,
-      data: ticket
+      callback,
+      data: JSON.stringify(ticket),
     };
 
-    const response = createRequest(options);
+    createRequest(options);
   }
 
-  update(id, data, callback) {}
+  static update(id, data, callback) {
+    const options = {
+      method: 'POST',
+      body: `http://localhost:7070?method=updateById&id=${id}`,
+      callback,
+      data: JSON.stringify(data),
+    };
 
-  delete(id, callback) {}
+    createRequest(options);
+  }
+
+  static delete(id, callback) {
+    const options = {
+      method: 'GET',
+      body: `http://localhost:7070?method=deleteById&id=${id}`,
+      callback,
+      // data: JSON.stringify(data)
+    };
+
+    createRequest(options);
+  }
 }

@@ -78,14 +78,12 @@ textarea {
 
 .ticket-info {
   margin-top: 15px;
+  border: 2px solid black;
 }
 
 .ticket-container  {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
-  border: 2px solid black;
-  /* padding: 20px 15px; */
 }
 
 .implement-container, .edit-container, .delete-container {
@@ -107,6 +105,25 @@ textarea {
 
 .shortdescr-container {
   width: 445px;
+}
+
+.ticket-description {
+  padding: 20px 60px;
+}
+
+.popup-delete {
+  position: absolute;
+  left: 20%;
+  top: 100px;
+  width: 50%;
+  display: block;
+  background-color: #fff;
+  border: 2px solid grey;
+  border-radius: 15px;
+}
+
+.popup-subj {
+  margin-left: 20px;
 }
 
 

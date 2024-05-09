@@ -1,12 +1,7 @@
 // *  Класс для создания формы создания нового тикета
 // * */
 export default class TicketForm {
-  constructor(nameForm) {
-    this.nameForm = nameForm;
-  }
-
-  renderFormTicket(nameForm) {
-
+  static renderFormTicket(nameForm) {
     const popUp = document.createElement('div');
     const popUpContainer = document.body.appendChild(popUp);
     popUpContainer.classList.add('popup');
@@ -17,19 +12,13 @@ export default class TicketForm {
 
     const popUpNameForm = document.createElement('div');
     const popUpNameFormContainer = popUpForm.appendChild(popUpNameForm);
-    // popUpForm.setAttribute('action', 'http://localhost:7070');
-    popUpNameFormContainer.classList.add('form-name')
+    popUpNameFormContainer.classList.add('form-name');
     popUpNameFormContainer.textContent = nameForm;
 
     let inputName = document.createElement('div');
     let inputFormName = popUpForm.appendChild(inputName);
     inputFormName.classList.add('input-name');
     inputFormName.textContent = 'Краткое описание';
-
-    // const inputShortDescription = document.createElement('input');
-    // inputShortDescription.setAttribute('type', 'textarea');
-    // const shortDescription = popUpForm.appendChild(inputShortDescription);
-    // shortDescription.classList.add('short-description');
 
     const inputShortDescription = document.createElement('textarea');
     inputShortDescription.setAttribute('rows', '2');
@@ -41,11 +30,6 @@ export default class TicketForm {
     inputFormName = popUpForm.appendChild(inputName);
     inputFormName.classList.add('input-name');
     inputFormName.textContent = 'Подробное описание';
-
-    // const inputDetailedDescription = document.createElement('input');
-    // inputDetailedDescription.setAttribute('type', 'textarea');
-    // const detailedDescription = popUpForm.appendChild(inputDetailedDescription);
-    // detailedDescription.classList.add('detailed-description');
 
     const inputDetailedDescription = document.createElement('textarea');
     inputDetailedDescription.setAttribute('rows', '3');
@@ -69,22 +53,10 @@ export default class TicketForm {
     formSubmit.textContent = 'ОК';
     formSubmit.classList.add('sumit-btn');
 
-    // this.formSubmit(popUp);
     this.cancelFopm(popUp);
   }
 
-  // formSubmit(popUp) {
-  //   // const form = document.querySelector('.form');
-
-
-  //   // form.addEventListener('submit', (e) => {
-  //   //   e.preventDefault();
-  //   //     console.log('submit');
-  //   //     this.removeForm(popUp);
-  //   // });
-  // }
-
-  cancelFopm(popUp) {
+  static cancelFopm(popUp) {
     const canselBtn = document.querySelector('.cancel-btn');
     canselBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -92,8 +64,7 @@ export default class TicketForm {
     });
   }
 
-  removeForm(form) {
+  static removeForm(form) {
     form.remove();
   }
-
 }

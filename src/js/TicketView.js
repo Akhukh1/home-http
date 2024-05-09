@@ -3,11 +3,7 @@
  *  Он содержит методы для генерации разметки тикета.
  * */
 export default class TicketView {
-  constructor(container) {
-    this.container = container;
-  }
-  rendericket(container, data) {
-
+  static renderTicket(container, data) {
     const ticketInfo = document.createElement('div');
     const ticketInfoContainer = container.appendChild(ticketInfo);
     ticketInfoContainer.classList.add('ticket-info');
@@ -22,17 +18,17 @@ export default class TicketView {
     let actionContainer = ticketContainer.appendChild(action);
     actionContainer.classList.add('implement-container');
     actionContainer.setAttribute('id', data.id);
-    if(data.status) {
+    if (data.status) {
       actionContainer.textContent = String.fromCharCode(10004);
     }
-    
-    let content = document.createElement('div');;
+
+    let content = document.createElement('div');
     let contentContainer = ticketContainer.appendChild(content);
     contentContainer.classList.add('shortdescr-container');
     contentContainer.setAttribute('id', data.id);
     contentContainer.textContent = data.name;
 
-    content = document.createElement('div');;
+    content = document.createElement('div');
     contentContainer = ticketContainer.appendChild(content);
     contentContainer.classList.add('date-container');
     contentContainer.setAttribute('id', data.id);
@@ -49,8 +45,5 @@ export default class TicketView {
     actionContainer.classList.add('delete-container');
     actionContainer.setAttribute('id', data.id);
     actionContainer.textContent = String.fromCharCode(10006);
-
-    
-
   }
 }

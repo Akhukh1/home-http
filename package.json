@@ -26,6 +26,7 @@
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "css-loader": "^7.1.1",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
