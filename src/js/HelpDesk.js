@@ -175,12 +175,17 @@ export default class HelpDesk {
     formSbmit.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(formSbmit);
-      const data = {
-        name: formData.get('name'),
-        description: formData.get('description'),
-      };
+      let  data = {};
+      if (formData.get('name') !== '') {
+        data.name = formData.get('name');
+      }
+      if (formData.get('description') !== '') {
+        data.description = formData.get('description');
+      }
       const callback = () => {
-        descr.textContent = data.name;
+        if (data.name) {
+          descr.textContent = data.name;
+        }
       };
       TicketService.update(id, data, callback);
 
