@@ -182,10 +182,9 @@ export default class HelpDesk {
       if (formData.get('description') !== '') {
         data.description = formData.get('description');
       }
-      const callback = () => {
-        if (data.name) {
-          descr.textContent = data.name;
-        }
+      const callback = (response) => {
+        const ticket = [...response].find((element) => element.id === id);
+        descr.textContent = ticket.name;
       };
       TicketService.update(id, data, callback);
 
